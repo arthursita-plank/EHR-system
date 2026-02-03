@@ -2,11 +2,6 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { LucideLayoutDashboard, Stethoscope } from "lucide-react"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -23,58 +18,59 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/50 p-4">
-      <div className="w-full max-w-md space-y-8">
-        <div className="flex flex-col items-center justify-center text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <Stethoscope className="h-8 w-8" />
-          </div>
-          <h2 className="mt-4 text-2xl font-bold tracking-tight">MediCore EHR</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Secure access for authorized medical personnel
-          </p>
+    <div className="login-page">
+      <div className="login-card">
+        <div className="login-logo">
+          <span>open</span>
+          <span>EMR</span>
         </div>
 
-        <Card className="border-border/50 shadow-xl">
-          <CardHeader>
-            <CardTitle>Sign In</CardTitle>
-            <CardDescription>Enter your credentials to access the system.</CardDescription>
-          </CardHeader>
-          <form onSubmit={handleLogin}>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input 
-                  id="email" 
-                  type="email" 
-                  placeholder="doctor@medicore.com" 
-                  required 
-                  className="bg-background"
-                  defaultValue="doctor@medicore.com"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input 
-                  id="password" 
-                  type="password" 
-                  required 
-                  className="bg-background"
-                  defaultValue="password"
-                />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? "Authenticating..." : "Sign In"}
-              </Button>
-            </CardFooter>
-          </form>
-        </Card>
-        
-        <p className="text-center text-xs text-muted-foreground">
-          Protected by industry standard encryption. Unauthorized access is prohibited.
-        </p>
+        <form onSubmit={handleLogin}>
+          <div className="form-group">
+            <label htmlFor="login-username">Username</label>
+            <input
+              id="login-username"
+              name="login-username"
+              className="form-control"
+              type="text"
+              placeholder="Enter your username"
+              required
+              defaultValue="drsmith"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="login-password">Password</label>
+            <input
+              id="login-password"
+              name="login-password"
+              className="form-control"
+              type="password"
+              placeholder="********"
+              required
+              defaultValue="password"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="login-email">E-Mail Address</label>
+            <input
+              id="login-email"
+              name="login-email"
+              className="form-control"
+              type="email"
+              placeholder="name@example.com"
+              defaultValue="drsmith@openemr.com"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="login-language">Language</label>
+            <select id="login-language" className="form-control">
+              <option>English (Standard)</option>
+            </select>
+          </div>
+          <button type="submit" className="btn-primary" disabled={loading}>
+            {loading ? "Authenticating..." : "Log In"}
+          </button>
+        </form>
       </div>
     </div>
   )

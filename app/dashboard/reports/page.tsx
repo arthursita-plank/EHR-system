@@ -1,29 +1,52 @@
-import { ReportTable } from "@/components/report-table"
-
-const reportData = [
-  { id: "R-2024-001", patientName: "Alice Johnson", date: "2024-01-15", type: "Lab Results", doctor: "Dr. Smith", status: "Final" },
-  { id: "R-2024-002", patientName: "Bob Smith", date: "2024-01-14", type: "Radiology", doctor: "Dr. Jones", status: "Pending" },
-  { id: "R-2024-003", patientName: "Charlie Brown", date: "2024-01-14", type: "Checkup", doctor: "Dr. Smith", status: "Final" },
-  { id: "R-2024-004", patientName: "Diana Prince", date: "2024-01-13", type: "Cardiology", doctor: "Dr. White", status: "Final" },
-  { id: "R-2024-005", patientName: "Evan Wright", date: "2024-01-12", type: "Lab Results", doctor: "Dr. Smith", status: "Reviews" },
-  { id: "R-2024-006", patientName: "Fiona Green", date: "2024-01-12", type: "General", doctor: "Dr. Jones", status: "Final" },
-  { id: "R-2024-007", patientName: "George Black", date: "2024-01-11", type: "Surgery", doctor: "Dr. White", status: "Final" },
-  { id: "R-2024-008", patientName: "Hannah Blue", date: "2024-01-10", type: "Pediatrics", doctor: "Dr. Smith", status: "Final" },
-  { id: "R-2024-009", patientName: "Ian Grey", date: "2024-01-10", type: "Lab Results", doctor: "Dr. Jones", status: "Pending" },
-  { id: "R-2024-010", patientName: "Jane Doe", date: "2024-01-09", type: "Cardiology", doctor: "Dr. Smith", status: "Final" },
-]
+import { Download, FolderLock, ClipboardList } from "lucide-react"
 
 export default function ReportsPage() {
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold tracking-tight">Reports</h1>
-        <p className="text-muted-foreground">
-          View and export detailed medical reports for patients.
-        </p>
+    <>
+      <header className="top-bar">
+        <div className="page-title">
+          <h1>Medical Reports</h1>
+        </div>
+        <div className="user-profile">
+          <span>Dr. Smith</span>
+          <div className="user-avatar" />
+        </div>
+      </header>
+
+      <div className="dashboard-container">
+        <section className="panel">
+          <h2 className="text-lg font-semibold">Patient Records</h2>
+          <div className="grid-cards mt-5">
+            <a
+              href="/report.csv"
+              download="summary_of_care.csv"
+              className="feature-card feature-card--wide border border-dashed border-[hsl(var(--accent))] bg-transparent"
+              id="download-summary-of-care"
+            >
+              <span className="feature-icon bg-[hsl(var(--accent)/0.1)] text-[hsl(var(--accent))]">
+                <Download className="h-6 w-6" />
+              </span>
+              <span className="feature-title text-[hsl(var(--accent))]">
+                Download Summary of Care
+              </span>
+            </a>
+
+            <div className="feature-card feature-card--wide">
+              <span className="feature-icon">
+                <ClipboardList className="h-6 w-6" />
+              </span>
+              <span className="feature-title">Customized History</span>
+            </div>
+
+            <div className="feature-card feature-card--wide">
+              <span className="feature-icon">
+                <FolderLock className="h-6 w-6" />
+              </span>
+              <span className="feature-title">Record Documents</span>
+            </div>
+          </div>
+        </section>
       </div>
-      
-      <ReportTable data={reportData} />
-    </div>
+    </>
   )
 }

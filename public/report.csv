@@ -1,0 +1,6 @@
+id,patient_name,date,type,doctor,status
+R-2024-001,Alice Johnson,2024-01-15,Lab Results,Dr. Smith,Final
+R-2024-002,Bob Smith,2024-01-14,Radiology,Dr. Jones,Pending
+R-2024-003,Charlie Brown,2024-01-14,Checkup,Dr. Smith,Final
+R-2024-004,Diana Prince,2024-01-13,Cardiology,Dr. White,Final
+R-2024-005,Evan Wright,2024-01-12,Lab Results,Dr. Smith,Review
